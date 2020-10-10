@@ -9,7 +9,7 @@ let blackWomenButton = document.getElementById("black-women");
 let backgButton = document.getElementById("backg");
 let flowersButton = document.getElementById("flowers");
 
-let shareButton = document.getElementById("share");
+// let shareButton = document.getElementById("share");
 
 frameButton.addEventListener("click", frameSelected);
 blackWomenButton.addEventListener("click", blackWomenSelected);
@@ -17,9 +17,9 @@ backgButton.addEventListener("click", backgSelected);
 flowersButton.addEventListener("click", flowersSelected);
 window.addEventListener("load", init);
 
-shareButton.addEventListener("click", () => {
-    console.log("told the truth");
-});
+// shareButton.addEventListener("click", () => {
+//     console.log("told the truth");
+// });
 
 //bring in images
 let gold1 = new Image();
@@ -73,11 +73,7 @@ let backgCount = 0;
 let flowersCount = 0;
 
 function frameSelected() {
-    // currentImage = frame1;
     frameCount = (frameCount + 1) % 4;
-    // if (timesClicked >1){
-    //   timesClicked = 0;
-    // }
     render();
 }
 
@@ -96,10 +92,6 @@ function flowersSelected() {
     render();
 }
 
-// function blackWomenSelected() {
-//   currentImage = ari;
-//   render();
-// }
 
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -113,9 +105,9 @@ function init() {
     render();
 }
 
-function shareWindow() {
-    bottom - nav.style.display = "none";
-}
+// function shareWindow() {
+//     bottom - nav.style.display = "none";
+// }
 
 
 
