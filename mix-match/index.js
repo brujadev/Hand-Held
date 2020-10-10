@@ -13,6 +13,7 @@ frameButton.addEventListener("click", frameSelected);
 blackWomenButton.addEventListener("click", blackWomenSelected);
 backgButton.addEventListener("click", backgSelected);
 flowersButton.addEventListener("click", flowersSelected);
+window.addEventListener("load", init);
 
 //bring in images
 let gold1 = new Image();
@@ -95,7 +96,7 @@ function flowersSelected() {
 // }
 
 function render() {
-    ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     // ctx.font = "20px serif";
     // ctx.fillStyle = "black";
     // ctx.fillText("Times Clicked: " + timesClicked, 100, 100);
@@ -103,14 +104,17 @@ function render() {
     // ctx.fillRect(100, 150, 100, 100);
 
     // ctx.drawImage(currentImage, 0, 0, 400, 400);
-    ctx.drawImage(tiles[backgCount], 25, 83, 350, 383);
-    ctx.drawImage(blackWomenIs[blackWomenCount], 73, 168, 240, 300);
-    ctx.drawImage(frames[frameCount], 2, 0, 395, 550);
-    ctx.drawImage(flowers[flowersCount], 150, 300, 250, 250);
+    ctx.drawImage(tiles[backgCount], 90, 45, 225, 370);
+    ctx.drawImage(blackWomenIs[blackWomenCount], 102, 145, 200, 250);
+    ctx.drawImage(frames[frameCount], 50, 0, 305, 450);
+    ctx.drawImage(flowers[flowersCount], 180, 275, 175, 175);
     // ctx.drawImage(frame2, 0, 0, 400, 400);
 }
 
-render();
+function init() {
+    render();
+}
+
 
 // //these are the assets to choose from
 // let frames = [

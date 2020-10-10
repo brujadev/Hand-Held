@@ -2,10 +2,30 @@ body {
     font-family: sans-serif;
     max-width: 400px;
     margin: auto;
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: fill-available;
+    touch-action: none !important;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 #canvas {
-    margin-top: 100px;
+    margin-top: 10px;
     /* border: 1px solid black; */
     width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+p {
+    font-size: 12px;
+    line-height: 2rem;
+    text-align: center;
 }
