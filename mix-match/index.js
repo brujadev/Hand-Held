@@ -9,11 +9,17 @@ let blackWomenButton = document.getElementById("black-women");
 let backgButton = document.getElementById("backg");
 let flowersButton = document.getElementById("flowers");
 
+let shareButton = document.getElementById("share");
+
 frameButton.addEventListener("click", frameSelected);
 blackWomenButton.addEventListener("click", blackWomenSelected);
 backgButton.addEventListener("click", backgSelected);
 flowersButton.addEventListener("click", flowersSelected);
 window.addEventListener("load", init);
+
+shareButton.addEventListener("click", () => {
+    console.log("told the truth");
+});
 
 //bring in images
 let gold1 = new Image();
@@ -97,23 +103,20 @@ function flowersSelected() {
 
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // ctx.font = "20px serif";
-    // ctx.fillStyle = "black";
-    // ctx.fillText("Times Clicked: " + timesClicked, 100, 100);
-    // ctx.fillStyle = "red";
-    // ctx.fillRect(100, 150, 100, 100);
-
-    // ctx.drawImage(currentImage, 0, 0, 400, 400);
     ctx.drawImage(tiles[backgCount], 90, 45, 225, 370);
     ctx.drawImage(blackWomenIs[blackWomenCount], 102, 145, 200, 250);
     ctx.drawImage(frames[frameCount], 50, 0, 305, 450);
     ctx.drawImage(flowers[flowersCount], 180, 275, 175, 175);
-    // ctx.drawImage(frame2, 0, 0, 400, 400);
 }
 
 function init() {
     render();
 }
+
+function shareWindow() {
+    bottom - nav.style.display = "none";
+}
+
 
 
 // //these are the assets to choose from
