@@ -9,7 +9,7 @@ let blackWomenButton = document.getElementById("black-women");
 let backgButton = document.getElementById("backg");
 let flowersButton = document.getElementById("flowers");
 
-// let shareButton = document.getElementById("share");
+let shareButton = document.getElementById("share");
 
 frameButton.addEventListener("click", frameSelected);
 blackWomenButton.addEventListener("click", blackWomenSelected);
@@ -17,9 +17,9 @@ backgButton.addEventListener("click", backgSelected);
 flowersButton.addEventListener("click", flowersSelected);
 window.addEventListener("load", init);
 
-// shareButton.addEventListener("click", () => {
-//     console.log("told the truth");
-// });
+shareButton.addEventListener("click", () => {
+    console.log("told the truth");
+});
 
 //bring in images
 let gold1 = new Image();
