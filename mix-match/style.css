@@ -4,7 +4,8 @@ body {
     margin: auto;
 }
 
-#target {
+#canvas {
     margin-top: 100px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    width: 100%;
 }
