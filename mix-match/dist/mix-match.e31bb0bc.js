@@ -123,94 +123,163 @@ var global = arguments[3];
 (function(a,b){if("function"==typeof define&&define.amd)define([],b);else if("undefined"!=typeof exports)b();else{b(),a.FileSaver={exports:{}}.exports}})(this,function(){"use strict";function b(a,b){return"undefined"==typeof b?b={autoBom:!1}:"object"!=typeof b&&(console.warn("Deprecated: Expected third argument to be a object"),b={autoBom:!b}),b.autoBom&&/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(a.type)?new Blob(["\uFEFF",a],{type:a.type}):a}function c(b,c,d){var e=new XMLHttpRequest;e.open("GET",b),e.responseType="blob",e.onload=function(){a(e.response,c,d)},e.onerror=function(){console.error("could not download file")},e.send()}function d(a){var b=new XMLHttpRequest;b.open("HEAD",a,!1);try{b.send()}catch(a){}return 200<=b.status&&299>=b.status}function e(a){try{a.dispatchEvent(new MouseEvent("click"))}catch(c){var b=document.createEvent("MouseEvents");b.initMouseEvent("click",!0,!0,window,0,0,0,80,20,!1,!1,!1,!1,0,null),a.dispatchEvent(b)}}var f="object"==typeof window&&window.window===window?window:"object"==typeof self&&self.self===self?self:"object"==typeof global&&global.global===global?global:void 0,a=f.saveAs||("object"!=typeof window||window!==f?function(){}:"download"in HTMLAnchorElement.prototype?function(b,g,h){var i=f.URL||f.webkitURL,j=document.createElement("a");g=g||b.name||"download",j.download=g,j.rel="noopener","string"==typeof b?(j.href=b,j.origin===location.origin?e(j):d(j.href)?c(b,g,h):e(j,j.target="_blank")):(j.href=i.createObjectURL(b),setTimeout(function(){i.revokeObjectURL(j.href)},4E4),setTimeout(function(){e(j)},0))}:"msSaveOrOpenBlob"in navigator?function(f,g,h){if(g=g||f.name||"download","string"!=typeof f)navigator.msSaveOrOpenBlob(b(f,h),g);else if(d(f))c(f,g,h);else{var i=document.createElement("a");i.href=f,i.target="_blank",setTimeout(function(){e(i)})}}:function(a,b,d,e){if(e=e||open("","_blank"),e&&(e.document.title=e.document.body.innerText="downloading..."),"string"==typeof a)return c(a,b,d);var g="application/octet-stream"===a.type,h=/constructor/i.test(f.HTMLElement)||f.safari,i=/CriOS\/[\d]+/.test(navigator.userAgent);if((i||g&&h)&&"object"==typeof FileReader){var j=new FileReader;j.onloadend=function(){var a=j.result;a=i?a:a.replace(/^data:[^;]*;/,"data:attachment/file;"),e?e.location.href=a:location=a,e=null},j.readAsDataURL(a)}else{var k=f.URL||f.webkitURL,l=k.createObjectURL(a);e?e.location=l:location.href=l,e=null,setTimeout(function(){k.revokeObjectURL(l)},4E4)}});f.saveAs=a.saveAs=a,"undefined"!=typeof module&&(module.exports=a)});
 
 
+},{}],"assets/gold1.png":[function(require,module,exports) {
+module.exports = "/gold1.0c7501c4.png";
+},{}],"assets/gold2.png":[function(require,module,exports) {
+module.exports = "/gold2.fac0c5e5.png";
+},{}],"assets/gold3.png":[function(require,module,exports) {
+module.exports = "/gold3.51ec1b07.png";
+},{}],"assets/gold4.png":[function(require,module,exports) {
+module.exports = "/gold4.3dd8e9e0.png";
+},{}],"assets/whitegoldtile.png":[function(require,module,exports) {
+module.exports = "/whitegoldtile.2114ddfb.png";
+},{}],"assets/mosaictile.png":[function(require,module,exports) {
+module.exports = "/mosaictile.3a4e5a03.png";
+},{}],"assets/bluetile.png":[function(require,module,exports) {
+module.exports = "/bluetile.77fb27fa.png";
+},{}],"assets/gabstytile.png":[function(require,module,exports) {
+module.exports = "/gabstytile.1e20bb73.png";
+},{}],"assets/flower1.png":[function(require,module,exports) {
+module.exports = "/flower1.8d349bda.png";
+},{}],"assets/flower2.png":[function(require,module,exports) {
+module.exports = "/flower2.da845d9f.png";
+},{}],"assets/flower3.png":[function(require,module,exports) {
+module.exports = "/flower3.9e7ab062.png";
+},{}],"assets/flower4.png":[function(require,module,exports) {
+module.exports = "/flower4.ff17ed8b.png";
+},{}],"assets/ari.png":[function(require,module,exports) {
+module.exports = "/ari.19704777.png";
+},{}],"assets/diana.png":[function(require,module,exports) {
+module.exports = "/diana.ce9416b8.png";
+},{}],"assets/megan.png":[function(require,module,exports) {
+module.exports = "/megan.b110fcd2.png";
+},{}],"assets/chaka.png":[function(require,module,exports) {
+module.exports = "/chaka.493b9d57.png";
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _fileSaver = require("file-saver");
 
+// document.addEventListener("touchstart", function () {}, false);
 var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d"); // let thisButton = document.getElementById("this");
-// let thatButton = document.getElementById("that");
+var ctx = canvas.getContext("2d"); //grab all of my buttons by their IDs
 
 var frameButton = document.getElementById("frame");
 var blackWomenButton = document.getElementById("black-women");
 var backgButton = document.getElementById("backg");
 var flowersButton = document.getElementById("flowers");
-var shareButton = document.getElementById("share");
+var shareButton = document.getElementById("share"); //event listerners for all of my buttons
+
 frameButton.addEventListener("click", frameSelected);
 blackWomenButton.addEventListener("click", blackWomenSelected);
 backgButton.addEventListener("click", backgSelected);
 flowersButton.addEventListener("click", flowersSelected);
 window.addEventListener("load", init);
-shareButton.addEventListener("click", tellTheTruth); //bring in images
+window.addEventListener("click", function () {
+  var song = document.getElementById("my_audio");
+  song.play();
+}); //hide reload button
+
+var createAgain = document.getElementById("createAgain");
+createAgain.style.display = "none";
+
+function reloadPage() {
+  // let menu = document.getElementById("bottomNav");
+  // menu.style.display = "initial";
+  // let message = document.getElementById("tellTruth");
+  // message.style.display = "hidden";
+  window.location.reload(); // blackWomenIs = [megan, ari, chaka, diana];
+}
+
+var refresh = document.getElementById("createAgain");
+refresh.addEventListener("click", reloadPage);
+shareButton.addEventListener("click", tellTheTruth); // canvas.toBlob(function (blob) {
+//   console.log(blob);
+//   saveAs(blob, "myImage.png");
+// });
+
+function tellTheTruth() {
+  var menu = document.getElementById("bottomNav");
+  menu.style.display = "none";
+  createAgain.style.display = "initial";
+  var shareMsg = document.getElementById("share");
+  shareMsg.innerHTML = "download your creation";
+  var message = document.getElementById("tellTruth");
+  message.style.display = "flex";
+  shareButton.addEventListener("click", function () {
+    console.log("told the truth");
+    canvas.toBlob(function (blob) {
+      console.log(blob);
+      (0, _fileSaver.saveAs)(blob, "myImage.png");
+    });
+  });
+} //bring in images
+
 
 var gold1 = new Image();
 gold1.crossOrigin = "anonymous";
-gold1.src = "assets/gold1.png";
+gold1.src = require("./assets/gold1.png");
 gold1.onload = render;
 var gold2 = new Image();
 gold2.crossOrigin = "anonymous";
-gold2.src = "assets/gold2.png";
+gold2.src = require("./assets/gold2.png");
 var gold3 = new Image();
 gold3.crossOrigin = "anonymous";
-gold3.src = "assets/gold3.png";
+gold3.src = require("./assets/gold3.png");
 var gold4 = new Image();
 gold4.crossOrigin = "anonymous";
-gold4.src = "assets/gold4.png";
+gold4.src = require("./assets/gold4.png");
 var frames = [gold1, gold2, gold3, gold4];
 var whitegoldtile = new Image();
 whitegoldtile.crossOrigin = "anonymous";
-whitegoldtile.src = "assets/whitegoldtile.png";
+whitegoldtile.src = require("./assets/whitegoldtile.png");
 whitegoldtile.onload = render;
 var mosaictile = new Image();
 mosaictile.crossOrigin = "anonymous";
-mosaictile.src = "assets/mosaictile.png";
+mosaictile.src = require("./assets/mosaictile.png");
 var bluetile = new Image();
-bluetile.src = "assets/bluetile.png";
+bluetile.crossOrigin = "anonymous";
+bluetile.src = require("./assets/bluetile.png");
 var gabstytile = new Image();
 gabstytile.crossOrigin = "anonymous";
-gabstytile.src = "assets/gabstytile.png";
+gabstytile.src = require("./assets/gabstytile.png");
 var tiles = [whitegoldtile, mosaictile, bluetile, gabstytile];
-var flower1 = new Image();
-flower1.crossOrigin = "anonymous";
-flower1.src = "assets/flower1.png";
-flower1.onload = render;
 var flower2 = new Image();
 flower2.crossOrigin = "anonymous";
-flower2.src = "assets/flower2.png";
+flower2.src = require("./assets/flower1.png");
+flower2.onload = render;
+var flower1 = new Image();
+flower1.crossOrigin = "anonymous";
+flower1.src = require("./assets/flower2.png");
 var flower3 = new Image();
 flower3.crossOrigin = "anonymous";
-flower3.src = "assets/flower3.png";
+flower3.src = require("./assets/flower3.png");
 var flower4 = new Image();
 flower4.crossOrigin = "anonymous";
-flower4.src = "assets/flower4.png";
+flower4.src = require("./assets/flower4.png");
 var flowers = [flower1, flower2, flower3, flower4];
 var ari = new Image();
 ari.crossOrigin = "anonymous";
-ari.src = "assets/ari.png";
+ari.src = require("./assets/ari.png");
 ari.onload = render;
 var diana = new Image();
 diana.crossOrigin = "anonymous";
-diana.src = "assets/diana.png";
+diana.src = require("./assets/diana.png");
 var megan = new Image();
 megan.crossOrigin = "anonymous";
-megan.src = "assets/megan.png";
+megan.src = require("./assets/megan.png");
 var chaka = new Image();
 chaka.crossOrigin = "anonymous";
-chaka.src = "assets/chaka.png";
+chaka.src = require("./assets/chaka.png");
 var blackWomenIs = [megan, ari, chaka, diana]; //set assets to 0
 
 var frameCount = 0;
 var blackWomenCount = 0;
 var backgCount = 0;
-var flowersCount = 0;
+var flowersCount = 0; //cycle through my images
 
 function frameSelected() {
-  // currentImage = frame1;
-  frameCount = (frameCount + 1) % 4; // if (timesClicked >1){
-  //   timesClicked = 0;
-  // }
-
+  frameCount = (frameCount + 1) % 4;
   render();
 }
 
@@ -227,7 +296,8 @@ function backgSelected() {
 function flowersSelected() {
   flowersCount = (flowersCount + 1) % 4;
   render();
-}
+} //draw my images on the canvas
+
 
 function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -235,14 +305,13 @@ function render() {
   ctx.drawImage(blackWomenIs[blackWomenCount], 102, 145, 200, 250);
   ctx.drawImage(frames[frameCount], 50, 0, 305, 450);
   ctx.drawImage(flowers[flowersCount], 180, 275, 175, 175); // ctx.drawImage(frame2, 0, 0, 400, 400);
-}
+} //run my application
+
 
 function init() {
+  createAgain.style.display = "none";
   render();
-} // function shareWindow() {
-//     bottom - nav.style.display = "none";
-// }
-// //these are the assets to choose from
+} // //these are the assets to choose from
 // let frames = [
 //   "assets/gold1.png",
 //   "assets/gold2.png",
@@ -267,7 +336,7 @@ function init() {
 //   "assets/whitegoldtile.png",
 //   "assets/gabstytile.png"
 // ];
-},{"file-saver":"node_modules/file-saver/dist/FileSaver.min.js"}],"../../../../.nvm/versions/node/v12.14.1/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"file-saver":"node_modules/file-saver/dist/FileSaver.min.js","./assets/gold1.png":"assets/gold1.png","./assets/gold2.png":"assets/gold2.png","./assets/gold3.png":"assets/gold3.png","./assets/gold4.png":"assets/gold4.png","./assets/whitegoldtile.png":"assets/whitegoldtile.png","./assets/mosaictile.png":"assets/mosaictile.png","./assets/bluetile.png":"assets/bluetile.png","./assets/gabstytile.png":"assets/gabstytile.png","./assets/flower1.png":"assets/flower1.png","./assets/flower2.png":"assets/flower2.png","./assets/flower3.png":"assets/flower3.png","./assets/flower4.png":"assets/flower4.png","./assets/ari.png":"assets/ari.png","./assets/diana.png":"assets/diana.png","./assets/megan.png":"assets/megan.png","./assets/chaka.png":"assets/chaka.png"}],"../../../../.nvm/versions/node/v12.14.1/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
