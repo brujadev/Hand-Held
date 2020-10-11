@@ -42,13 +42,6 @@ function reloadPage() {
     createAgain.style.display = "none";
 }
 
-function reset() {
-    frameCount = 0;
-    blackWomenCount = 0;
-    backgCount = 0;
-    flowersCount = 0;
-    render()
-}
 
 let refresh = document.getElementById("createAgain");
 refresh.addEventListener("click", reloadPage);

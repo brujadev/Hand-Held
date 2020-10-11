@@ -196,14 +196,6 @@ function reloadPage() {
   createAgain.style.display = "none";
 }
 
-function reset() {
-  frameCount = 0;
-  blackWomenCount = 0;
-  backgCount = 0;
-  flowersCount = 0;
-  render();
-}
-
 var refresh = document.getElementById("createAgain");
 refresh.addEventListener("click", reloadPage);
 shareButton.addEventListener("click", tellTheTruth); // canvas.toBlob(function (blob) {
