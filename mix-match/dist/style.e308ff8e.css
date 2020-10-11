@@ -90,7 +90,7 @@ p {
 
 @media only screen and (max-width: 320px) {
     #bottomNav {
-        padding: 20px 15px 10px 15px;
+        padding: 20px 10px 10px 10px;
     }
 }
 
