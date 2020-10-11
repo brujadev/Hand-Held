@@ -30,12 +30,24 @@ let createAgain = document.getElementById("createAgain");
 createAgain.style.display = "none";
 
 function reloadPage() {
-    // let menu = document.getElementById("bottomNav");
-    // menu.style.display = "initial";
-    // let message = document.getElementById("tellTruth");
-    // message.style.display = "hidden";
-    window.location.reload();
-    // blackWomenIs = [megan, ari, chaka, diana];
+    frameCount = 0;
+    blackWomenCount = 0;
+    backgCount = 0;
+    flowersCount = 0;
+    render();
+    let menu = document.getElementById("bottomNav");
+    menu.style.display = "flex";
+    let message = document.getElementById("tellTruth");
+    message.style.display = "none";
+    createAgain.style.display = "none";
+}
+
+function reset() {
+    frameCount = 0;
+    blackWomenCount = 0;
+    backgCount = 0;
+    flowersCount = 0;
+    render()
 }
 
 let refresh = document.getElementById("createAgain");
