@@ -31,7 +31,7 @@ body {
 #options {
     display: flex;
     justify-content: space-around;
-    padding: 5px;
+    padding: 2px;
 }
 
 .main-buttons {

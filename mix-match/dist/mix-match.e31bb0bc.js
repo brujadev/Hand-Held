@@ -198,10 +198,7 @@ function reloadPage() {
 
 var refresh = document.getElementById("createAgain");
 refresh.addEventListener("click", reloadPage);
-shareButton.addEventListener("click", tellTheTruth); // canvas.toBlob(function (blob) {
-//   console.log(blob);
-//   saveAs(blob, "myImage.png");
-// });
+shareButton.addEventListener("click", tellTheTruth);
 
 function tellTheTruth() {
   var menu = document.getElementById("bottomNav");
@@ -309,7 +306,7 @@ function render() {
   ctx.drawImage(tiles[backgCount], 95, 40, 215, 370);
   ctx.drawImage(blackWomenIs[blackWomenCount], 102, 145, 200, 250);
   ctx.drawImage(frames[frameCount], 50, 0, 305, 450);
-  ctx.drawImage(flowers[flowersCount], 180, 275, 175, 175); // ctx.drawImage(frame2, 0, 0, 400, 400);
+  ctx.drawImage(flowers[flowersCount], 180, 275, 175, 175);
 } //run my application
 
 
