@@ -1,11 +1,11 @@
 import { saveAs } from "file-saver";
+import ari_url from "../assets/ari.png";
+import diana_url from "../assets/diana.png";
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
-// let thisButton = document.getElementById("this");
-// let thatButton = document.getElementById("that");
-
+//grab all of my buttons by their IDs
 let frameButton = document.getElementById("frame");
 let blackWomenButton = document.getElementById("black-women");
 let backgButton = document.getElementById("backg");
@@ -13,18 +13,40 @@ let flowersButton = document.getElementById("flowers");
 
 let shareButton = document.getElementById("share");
 
+//event listerners for all of my buttons
 frameButton.addEventListener("click", frameSelected);
 blackWomenButton.addEventListener("click", blackWomenSelected);
 backgButton.addEventListener("click", backgSelected);
 flowersButton.addEventListener("click", flowersSelected);
 window.addEventListener("load", init);
 
-shareButton.addEventListener("click", () => {
-    console.log("told the truth");
-    canvas.toBlob(function(blob) {
-        saveAs(blob, "myImage.png");
-    })
-});
+//hide reload button
+createAgain.style.display = "none";
+
+function reloadPage() {
+    window.location.reload();
+}
+
+let refresh = document.getElementById("createAgain");
+refresh.addEventListener("click", reloadPage);
+
+shareButton.addEventListener("click", tellTheTruth);
+
+function tellTheTruth() {
+    bottomNav.style.display = "none";
+    createAgain.style.display = "initial";
+    let shareMsg = document.getElementById("share");
+    shareMsg.innerHTML = "download your creation";
+    let message = document.getElementById("tellTruth");
+    message.style.display = "flex";
+    shareButton.addEventListener("click", () => {
+        console.log("told the truth");
+        canvas.toBlob(function(blob) {
+            console.log(blob);
+            saveAs(blob, "myImage.png");
+        });
+    });
+}
 
 //bring in images
 let gold1 = new Image();
@@ -56,13 +78,13 @@ gabstytile.crossOrigin = "anonymous";
 gabstytile.src = "assets/gabstytile.png";
 let tiles = [whitegoldtile, mosaictile, bluetile, gabstytile];
 
-let flower1 = new Image();
-flower1.crossOrigin = "anonymous";
-flower1.src = "assets/flower1.png";
-flower1.onload = render;
 let flower2 = new Image();
 flower2.crossOrigin = "anonymous";
-flower2.src = "assets/flower2.png";
+flower2.src = "assets/flower1.png";
+flower2.onload = render;
+let flower1 = new Image();
+flower1.crossOrigin = "anonymous";
+flower1.src = "assets/flower2.png";
 let flower3 = new Image();
 flower3.crossOrigin = "anonymous";
 flower3.src = "assets/flower3.png";
@@ -92,6 +114,7 @@ let blackWomenCount = 0;
 let backgCount = 0;
 let flowersCount = 0;
 
+//cycle through my images
 function frameSelected() {
     frameCount = (frameCount + 1) % 4;
     render();
@@ -112,15 +135,16 @@ function flowersSelected() {
     render();
 }
 
-
+//draw my images on the canvas
 function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(tiles[backgCount], 90, 45, 225, 370);
+    ctx.drawImage(tiles[backgCount], 95, 40, 215, 370);
     ctx.drawImage(blackWomenIs[blackWomenCount], 102, 145, 200, 250);
     ctx.drawImage(frames[frameCount], 50, 0, 305, 450);
-    ctx.drawImage(flowers[flowersCount], 180, 275, 175, 175);
+    ctx.drawImage(flowers[flowersCount], 180, 275, 175, 175); // ctx.drawImage(frame2, 0, 0, 400, 400);
 }
 
+//run my application
 function init() {
     render();
 }

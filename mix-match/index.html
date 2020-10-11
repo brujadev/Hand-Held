@@ -6,9 +6,9 @@
     <meta charset="UFT-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Black women are the standard of beauty." />
-    <meta property="og:image" content="https://wkbr3.csb.app/assets/bwafa.png" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta property="og:image" content="https://wkbr3.csb.app/assets/bwafa.jpg" />
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,500;1,600;1,700&family=Secular+One&display=swap" rel="stylesheet" />
 </head>
 
 <body>
@@ -20,22 +20,29 @@
     <!-- <div>
         <button id="right">that</button>
       </div> -->
-    <br>
-    <div id="bottom-nav">
-        <button id="black-women">Black Women</button>
-        <button id="frame">Are</button>
-        <button id="backg">Fine</button>
-        <button id="flowers">Art</button>
+
+    <div id="bottomNav">
+        <span id="black-women" class="main-buttons">Black Women</span>
+        <span id="frame" class="main-buttons">Are</span>
+        <span id="backg" class="main-buttons">Fine</span>
+        <span id="flowers" class="main-buttons">Art</span>
     </div>
-    <button id="share">Tell the world</button>
     <div class="test" id="statement">
-        <p id="share-msg">If you're here, I assume you know the value of Black lives. I also assume you know that Black women are the standard of beauty. Download the image you made and share onto your Instagram with the hashtag #BWAFA.</p>
-        <input type="text" id="message" maxlength="210">
-        <button id="url" onclick="tellTheTruth()">download</button>
+        <p id="tellTruth">
+            From how we adorn ourselves, our speech, to the structure of our cheekbones and fullness of our lips, Black women are the standard of beauty. Others may imitate but duplicating is simply not possible! This little web app is a love letter to Black women.
+            Download what you made and share on Instagram with the hashtag #BWAFA.
+        </p>
+        <div id="options">
+            <button id="share" class="sec-buttons">tell the world the truth</button>
+            <button id="createAgain" class="sec-buttons">make another one</button>
+        </div>
     </div>
-    <p>imagined and designed by <a href="https://bruja.dev" target="_blank">elizabeth perez</a><br></p>
-    <!-- <img src='assets/ari.png'> -->
-    <script src="index.js"></script>
+    <p class="author">
+        designed by
+        <a href="https://bruja.dev" target="_blank">elizabeth perez</a> 💁🏽‍♀️🌸
+    </p>
+
+    <script src="src/index.js"></script>
 </body>
 
 </html>
