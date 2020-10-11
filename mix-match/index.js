@@ -1,6 +1,6 @@
 import { saveAs } from "file-saver";
-import ari_url from "../assets/ari.png";
-import diana_url from "../assets/diana.png";
+
+// document.addEventListener("touchstart", function () {}, false);
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -20,11 +20,22 @@ backgButton.addEventListener("click", backgSelected);
 flowersButton.addEventListener("click", flowersSelected);
 window.addEventListener("load", init);
 
+window.addEventListener("click", () => {
+    let song = document.getElementById("my_audio");
+    song.play();
+});
+
 //hide reload button
+let createAgain = document.getElementById("createAgain");
 createAgain.style.display = "none";
 
 function reloadPage() {
+    // let menu = document.getElementById("bottomNav");
+    // menu.style.display = "initial";
+    // let message = document.getElementById("tellTruth");
+    // message.style.display = "hidden";
     window.location.reload();
+    // blackWomenIs = [megan, ari, chaka, diana];
 }
 
 let refresh = document.getElementById("createAgain");
@@ -32,8 +43,14 @@ refresh.addEventListener("click", reloadPage);
 
 shareButton.addEventListener("click", tellTheTruth);
 
+// canvas.toBlob(function (blob) {
+//   console.log(blob);
+//   saveAs(blob, "myImage.png");
+// });
+
 function tellTheTruth() {
-    bottomNav.style.display = "none";
+    let menu = document.getElementById("bottomNav");
+    menu.style.display = "none";
     createAgain.style.display = "initial";
     let shareMsg = document.getElementById("share");
     shareMsg.innerHTML = "download your creation";
@@ -51,61 +68,62 @@ function tellTheTruth() {
 //bring in images
 let gold1 = new Image();
 gold1.crossOrigin = "anonymous";
-gold1.src = "assets/gold1.png";
+gold1.src = require("./assets/gold1.png");
 gold1.onload = render;
 let gold2 = new Image();
 gold2.crossOrigin = "anonymous";
-gold2.src = "assets/gold2.png";
+gold2.src = require("./assets/gold2.png");
 let gold3 = new Image();
 gold3.crossOrigin = "anonymous";
-gold3.src = "assets/gold3.png";
+gold3.src = require("./assets/gold3.png");
 let gold4 = new Image();
 gold4.crossOrigin = "anonymous";
-gold4.src = "assets/gold4.png";
+gold4.src = require("./assets/gold4.png");
 let frames = [gold1, gold2, gold3, gold4];
 
 let whitegoldtile = new Image();
 whitegoldtile.crossOrigin = "anonymous";
-whitegoldtile.src = "assets/whitegoldtile.png";
+whitegoldtile.src = require("./assets/whitegoldtile.png");
 whitegoldtile.onload = render;
 let mosaictile = new Image();
 mosaictile.crossOrigin = "anonymous";
-mosaictile.src = "assets/mosaictile.png";
+mosaictile.src = require("./assets/mosaictile.png");
 let bluetile = new Image();
-bluetile.src = "assets/bluetile.png";
+bluetile.crossOrigin = "anonymous";
+bluetile.src = require("./assets/bluetile.png");
 let gabstytile = new Image();
 gabstytile.crossOrigin = "anonymous";
-gabstytile.src = "assets/gabstytile.png";
+gabstytile.src = require("./assets/gabstytile.png");
 let tiles = [whitegoldtile, mosaictile, bluetile, gabstytile];
 
 let flower2 = new Image();
 flower2.crossOrigin = "anonymous";
-flower2.src = "assets/flower1.png";
+flower2.src = require("./assets/flower1.png");
 flower2.onload = render;
 let flower1 = new Image();
 flower1.crossOrigin = "anonymous";
-flower1.src = "assets/flower2.png";
+flower1.src = require("./assets/flower2.png");
 let flower3 = new Image();
 flower3.crossOrigin = "anonymous";
-flower3.src = "assets/flower3.png";
+flower3.src = require("./assets/flower3.png");
 let flower4 = new Image();
 flower4.crossOrigin = "anonymous";
-flower4.src = "assets/flower4.png";
+flower4.src = require("./assets/flower4.png");
 let flowers = [flower1, flower2, flower3, flower4];
 
 let ari = new Image();
 ari.crossOrigin = "anonymous";
-ari.src = "assets/ari.png";
+ari.src = require("./assets/ari.png");
 ari.onload = render;
 let diana = new Image();
 diana.crossOrigin = "anonymous";
-diana.src = "assets/diana.png";
+diana.src = require("./assets/diana.png");
 let megan = new Image();
 megan.crossOrigin = "anonymous";
-megan.src = "assets/megan.png";
+megan.src = require("./assets/megan.png");
 let chaka = new Image();
 chaka.crossOrigin = "anonymous";
-chaka.src = "assets/chaka.png";
+chaka.src = require("./assets/chaka.png");
 let blackWomenIs = [megan, ari, chaka, diana];
 
 //set assets to 0
@@ -146,13 +164,9 @@ function render() {
 
 //run my application
 function init() {
+    createAgain.style.display = "none";
     render();
 }
-
-// function shareWindow() {
-//     bottom - nav.style.display = "none";
-// }
-
 
 
 // //these are the assets to choose from
