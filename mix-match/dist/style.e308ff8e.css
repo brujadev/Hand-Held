@@ -31,7 +31,7 @@ body {
 #options {
     display: flex;
     justify-content: space-around;
-    padding: 2px;
+    padding: 5px;
 }
 
 .main-buttons {
@@ -86,6 +86,12 @@ p {
 
 .author {
     font-family: "Ubuntu Mono", monospace;
+}
+
+@media only screen and (max-width: 320px) {
+    #bottomNav {
+        padding: 20px 10px 10px;
+    }
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
