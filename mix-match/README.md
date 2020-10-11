@@ -11,4 +11,6 @@ You can view my application by [clicking here](https://wkbr3.csb.app/).
 
 Images were pulled from different websites.
 
+## Author
 
+[Elizabeth Pérez](https://bruja.dev).
