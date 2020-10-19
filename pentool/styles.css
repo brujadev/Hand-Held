@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     position: relative;
+    /* background-image: linear-gradient(60deg, #55ea82, #f27ef4); */
 }
 
 canvas {
@@ -11,4 +12,33 @@ canvas {
     right: 0;
     top: 0;
     bottom: 0;
+}
+
+#buttons {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    /* top: 5%; */
+    z-index: 1;
+}
+
+#buttons>button {
+    font-family: "IBM Plex Mono", monospace;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    position: relative;
+    background-color: #f27ef4;
+}
+
+#buttons>button:hover {
+    background-color: greenyellow;
+}
+
+#buttons>button:target {
+    border-color: #000000;
+    color: #000000;
 }
