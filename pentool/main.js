@@ -14,7 +14,7 @@ ctx.fillStyle = gradient;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 // my pen color
-ctx.fillStyle = "rgb(147,112,219,0.4)";
+// ctx.fillStyle = "rgb(147,112,219,0.4)";
 
 let penDown = false;
 let last_x = 0;
@@ -30,14 +30,16 @@ function init() {
     let pencil2 = document.getElementById("button2");
     let pencil3 = document.getElementById("button3");
     let reset = document.getElementById("resetButton");
+    let pink = document.getElementById("pink");
+    let blue = document.getElementById("blue");
 
     pencil1.addEventListener("click", function() {
         if (whichPen === 1) {
             whichPen = 0;
         } else {
             whichPen = 1;
-
         }
+        console.log("working");
     });
 
     pencil2.addEventListener("click", function() {
@@ -46,6 +48,7 @@ function init() {
         } else {
             whichPen = 2;
         }
+        // console.log("working");
     });
 
     pencil3.addEventListener("click", function() {
@@ -54,6 +57,7 @@ function init() {
         } else {
             whichPen = 3;
         }
+        console.log("working");
     });
 
     reset.addEventListener("click", function() {
@@ -71,7 +75,6 @@ function paintStart(x, y) {
     penDown = true;
     last_x = x;
     last_y = y;
-
 }
 
 function normRandom(size) {
@@ -80,7 +83,7 @@ function normRandom(size) {
 
 function paintMove(x, y) {
     ctx.beginPath();
-    ctx.fillStyle = "rgb(147,112,219,0.4)";
+    // ctx.fillStyle = "rgb(147,112,219,0.4)";
     let thickness = 2;
     ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
@@ -113,81 +116,55 @@ function paintMove(x, y) {
 
 function paintMove2(x, y) {
     ctx.beginPath();
-    ctx.fillStyle = "rgb(255,0,255)";
+    ctx.fillStyle = "green";
     let thickness = 1;
     // ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
-    // ctx.stroke();
+    ctx.stroke();
     // ctx.beginPath();
     let randomness = 25;
-
     for (let i = 0; i < 15; i++) {
         ctx.beginPath();
-        // ctx.strokeStyle = "rbg(255,0,255,0.6)"
+        ctx.strokeStyle = "rbg(255,0,255,0.6)"
         ctx.arc(
             x + normRandom(randomness),
             y + normRandom(randomness),
             10,
             0,
             Math.PI * 2);
-        ctx.strokeStyle = "rgb(255,0,255)"
+        // ctx.strokeStyle = "rgb(255,0,255)"
         ctx.stroke();
     }
-    ctx.fill();
-
-
+    // ctx.fill();
     last_x = x;
     last_y = y;
 }
 
 function paintMove3(x, y) {
-    ctx.globalAlpha = a;
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(Math.PI / 180 * getRandomInt(0, 360));
+    ctx.beginPath();
+    ctx.fillStyle = "green";
+    // let thickness = 1;
+    // ctx.lineWidth = thickness;
+    ctx.moveTo(last_x, last_y);
+    ctx.lineTo(x, y);
+    ctx.stroke();
     for (var i = 20; i--;) {
         ctx.fillStyle = 'black';
         ctx.beginPath();
-        ctx.moveTo(15, 15);
+        ctx.moveTo(5, 15);
         ctx.lineTo(15, 0);
         ctx.lineTo(0, 1);
+        ctx.lineTo(20, 3);
         ctx.closePath();
     }
-    ctx.fill();
-    ctx.restore();
-    // ctx.beginPath();
-    // ctx.fillStyle = (Math.random);
-    // ctx.strokeStyle = "rgb(255,0,255,0.6)"
-    // ctx.arc(
-    //     (last_x * 2),
-    //     (last_y * 2) / 2,
-    //     Math.abs((x - last_x) / 2),
-    //     0,
-    //     Math.PI * 2
-    // );
-    // ctx.fill();
-    // ctx.stroke();
-
-    // ctx.beginPath();
-    // ctx.fillStyle = "rgb(72, 96, 53)";
-    // let deltaX = last_x - x;
-    // let deltaY = last_y - y;
-    // let r = Math.sqrt(deltaX * deltaX - deltaY * deltaY) / 4;
-    // let randomX = Math.random() * Math.abs((x - last_x) / 2) + r;
-    // let randomY = Math.random() * Math.abs((y - last_y) / 2);
-    // ctx.arc(last_x + randomX, last_y + randomY, r, 0, Math.PI * 2);
-    // ctx.fill();
-    // last_x = x;
-    // last_y = y;
-
 }
 
 function paintEnd(x, y) {
-    ctx.beginPath();
-    ctx.fillStyle = "rgb(147,112,219)";
-    //not red?
-    // ctx.arc(x, y, 20, 0, 2 * Math.PI);
-    ctx.stroke();
+    // ctx.beginPath();
+    // ctx.fillStyle = "rgb(147,112,219)";
+    // //not red?
+    // // ctx.arc(x, y, 20, 0, 2 * Math.PI);
+    // ctx.stroke();
 }
 
 canvas.addEventListener("mousedown", function(evt) {
@@ -252,3 +229,19 @@ canvas.addEventListener("mouseout", function(evt) {
     penDown = false;
 
 });
+
+// function colorSelected() {
+pink.addEventListener("click", () => {
+    console.log("got pink")
+    ctx.strokeStyle = "#pink";
+    console.log(ctx.strokeStyle);
+    ctx.fillStyle = "pink";
+});
+
+blue.addEventListener("click", () => {
+    console.log("got blue")
+    ctx.strokeStyle = "blue";
+    console.log(ctx.strokeStyle);
+    ctx.fillStyle = "blue";
+});
+// }

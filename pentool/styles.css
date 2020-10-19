@@ -15,12 +15,21 @@ canvas {
 }
 
 #buttons {
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: absolute;
     /* top: 5%; */
+    z-index: 1;
+}
+
+#colors {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: reverse;
+    justify-content: flex-end;
+    position: relative;
+    /* ottom: 5%; b */
     z-index: 1;
 }
 
@@ -32,6 +41,19 @@ canvas {
     border: none;
     position: relative;
     background-color: #f27ef4;
+}
+
+.options {
+    font-family: "IBM Plex Mono", monospace;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px;
+    padding: 10px;
+    width: 100px;
+    height: 100;
+    border-radius: 50px;
+    border: none;
+    position: relative;
+    background-color: #55ea82;
 }
 
 #buttons>button:hover {
