@@ -2,6 +2,7 @@
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
+let current_color = "white";
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -92,6 +93,8 @@ function paintMove(x, y) {
     ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
     ctx.lineTo(x, y);
+    ctx.strokeStyle = current_color;
+    ctx.fillStyle = current_color;
 
     // let interpolatedPoints = pointsAlongLine(x, y, last_x, last_y, 0.5);
     // console.log(interpolatedPoints);
@@ -125,11 +128,13 @@ function paintMove2(x, y) {
     // ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
     ctx.stroke();
+    ctx.strokeStyle = current_color;
+    ctx.fillStyle = current_color;
     // ctx.beginPath();
     let randomness = 25;
     for (let i = 0; i < 15; i++) {
         ctx.beginPath();
-        ctx.strokeStyle = "rbg(255,0,255,0.6)"
+        // ctx.strokeStyle = "rbg(255,0,255,0.6)"
         ctx.arc(
             x + normRandom(randomness),
             y + normRandom(randomness),
@@ -146,14 +151,17 @@ function paintMove2(x, y) {
 
 function paintMove3(x, y) {
     ctx.beginPath();
-    ctx.fillStyle = "green";
+    // ctx.fillStyle = "green";
     // let thickness = 1;
     // ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
     ctx.lineTo(x, y);
+    ctx.strokeStyle = current_color;
+    ctx.fillStyle = current_color;
     ctx.stroke();
+
     for (var i = 0; i < 20; i++) {
-        ctx.fillStyle = 'black';
+        // ctx.fillStyle = 'black';
         ctx.beginPath();
         ctx.moveTo(2, 10);
         ctx.lineTo(10, 0);
@@ -235,45 +243,47 @@ canvas.addEventListener("mouseout", function(evt) {
 });
 
 // function colorSelected() {
+
 pink.addEventListener("click", () => {
-    console.log("got pink")
-    ctx.strokeStyle = "pink";
-    console.log(ctx.strokeStyle);
-    ctx.fillStyle = "pink";
+    current_color = "pink";
+    // ctx.strokeStyle = current_color;
+    // console.log(ctx.strokeStyle);
+    ctx.fillStyle = current_color;
 });
 
 blue.addEventListener("click", () => {
-    console.log("got blue")
-    ctx.strokeStyle = "blue";
+    current_color = "blue";
     console.log(ctx.strokeStyle);
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = current_color;
 });
 
 orange.addEventListener("click", () => {
-    console.log("got orange")
-    ctx.strokeStyle = "orange";
-    console.log(ctx.strokeStyle);
-    ctx.fillStyle = "orange";
+    current_color = "orange";
+    // ctx.strokeStyle = "orange";
+    // console.log(ctx.strokeStyle);
+    ctx.fillStyle = current_color;
 });
 
 green.addEventListener("click", () => {
-    console.log("got green")
-    ctx.strokeStyle = "green";
-    console.log(ctx.strokeStyle);
-    ctx.fillStyle = "green";
+    current_color = "blue";
+    // ctx.strokeStyle = "green";
+    // console.log(ctx.strokeStyle);
+    ctx.fillStyle = current_color;
 });
 
 cyan.addEventListener("click", () => {
-    console.log("got cyan")
-    ctx.strokeStyle = "cyan";
-    console.log(ctx.strokeStyle);
-    ctx.fillStyle = "cyan";
+    current_color = "cyan";
+    // console.log("got cyan")
+    // ctx.strokeStyle = "cyan";
+    // console.log(ctx.strokeStyle);
+    ctx.fillStyle = current_color;
 });
 
 yellow.addEventListener("click", () => {
-    console.log("got yellow")
-    ctx.strokeStyle = "yellow";
-    console.log(ctx.strokeStyle);
-    ctx.fillStyle = "yellow";
+    current_color = "yellow";
+    // console.log("got yellow")
+    // ctx.strokeStyle = "yellow";
+    // console.log(ctx.strokeStyle);
+    ctx.fillStyle = current_color;
 });
 // }
