@@ -265,7 +265,7 @@ orange.addEventListener("click", () => {
 });
 
 green.addEventListener("click", () => {
-    current_color = "blue";
+    current_color = "green";
     // ctx.strokeStyle = "green";
     // console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
