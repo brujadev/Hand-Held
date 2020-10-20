@@ -43,25 +43,25 @@ function init() {
         // } else {
         whichPen = 1;
         // }
-        console.log("working");
+        console.log("working pen 1");
     });
 
     pencil2.addEventListener("click", function() {
-        if (whichPen === 2) {
-            whichPen = 0;
-        } else {
-            whichPen = 2;
-        }
-        // console.log("working");
+        // if (whichPen === 2) {
+        //     whichPen = 0;
+        // } else {
+        whichPen = 2;
+        // }
+        console.log("working pen 2");
     });
 
     pencil3.addEventListener("click", function() {
-        if (whichPen === 3) {
-            whichPen = 0;
-        } else {
-            whichPen = 3;
-        }
-        console.log("working");
+        // if (whichPen === 3) {
+        //     whichPen = 0;
+        // } else {
+        whichPen = 3;
+        // }
+        console.log("working pen 3");
     });
 
     reset.addEventListener("click", function() {
