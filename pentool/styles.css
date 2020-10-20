@@ -30,7 +30,7 @@ canvas {
     justify-content: flex-end;
     position: relative;
     /* ottom: 5%; b */
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 #buttons>button {
@@ -47,8 +47,8 @@ canvas {
     font-family: "IBM Plex Mono", monospace;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 10px;
-    padding: 10px;
-    width: 100px;
+    padding: 20px;
+    width: 40;
     height: 100;
     border-radius: 50px;
     border: none;
@@ -63,4 +63,28 @@ canvas {
 #buttons>button:target {
     border-color: #000000;
     color: #000000;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#cyan {
+    background-color: cyan;
+}
+
+#pink {
+    background-color: pink;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#orange {
+    background-color: orange;
+}
+
+#green {
+    background-color: green;
 }

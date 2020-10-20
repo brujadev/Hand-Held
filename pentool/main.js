@@ -26,19 +26,23 @@ let whichPen = 0;
 window.addEventListener("load", init);
 
 function init() {
-    let pencil1 = document.getElementById("button1");
+    let pencil1 = document.getElementById("button11");
     let pencil2 = document.getElementById("button2");
     let pencil3 = document.getElementById("button3");
     let reset = document.getElementById("resetButton");
     let pink = document.getElementById("pink");
     let blue = document.getElementById("blue");
+    let orange = document.getElementById("orange");
+    let cyan = document.getElementById("cyan");
+    let yellow = document.getElementById("yellow");
+    let green = document.getElementById("green");
 
     pencil1.addEventListener("click", function() {
-        if (whichPen === 1) {
-            whichPen = 0;
-        } else {
-            whichPen = 1;
-        }
+        // if (whichPen === 1) {
+        //     whichPen = 0;
+        // } else {
+        whichPen = 1;
+        // }
         console.log("working");
     });
 
@@ -108,7 +112,7 @@ function paintMove(x, y) {
         ctx.fillRect(x + normRandom(randomness), y + normRandom(randomness), 2, 25);
     }
     ctx.arc(x, y, thickness / 2, 0, Math.PI * 2);
-    // ctx.fill();
+    ctx.fill();
     last_x = x;
     last_y = y;
 }
@@ -148,14 +152,14 @@ function paintMove3(x, y) {
     ctx.moveTo(last_x, last_y);
     ctx.lineTo(x, y);
     ctx.stroke();
-    for (var i = 20; i--;) {
+    for (var i = 0; i < 20; i++) {
         ctx.fillStyle = 'black';
         ctx.beginPath();
-        ctx.moveTo(5, 15);
-        ctx.lineTo(15, 0);
+        ctx.moveTo(2, 10);
+        ctx.lineTo(10, 0);
         ctx.lineTo(0, 1);
         ctx.lineTo(20, 3);
-        ctx.closePath();
+        // ctx.closePath();
     }
 }
 
@@ -233,7 +237,7 @@ canvas.addEventListener("mouseout", function(evt) {
 // function colorSelected() {
 pink.addEventListener("click", () => {
     console.log("got pink")
-    ctx.strokeStyle = "#pink";
+    ctx.strokeStyle = "pink";
     console.log(ctx.strokeStyle);
     ctx.fillStyle = "pink";
 });
@@ -243,5 +247,33 @@ blue.addEventListener("click", () => {
     ctx.strokeStyle = "blue";
     console.log(ctx.strokeStyle);
     ctx.fillStyle = "blue";
+});
+
+orange.addEventListener("click", () => {
+    console.log("got orange")
+    ctx.strokeStyle = "orange";
+    console.log(ctx.strokeStyle);
+    ctx.fillStyle = "orange";
+});
+
+green.addEventListener("click", () => {
+    console.log("got green")
+    ctx.strokeStyle = "green";
+    console.log(ctx.strokeStyle);
+    ctx.fillStyle = "green";
+});
+
+cyan.addEventListener("click", () => {
+    console.log("got cyan")
+    ctx.strokeStyle = "cyan";
+    console.log(ctx.strokeStyle);
+    ctx.fillStyle = "cyan";
+});
+
+yellow.addEventListener("click", () => {
+    console.log("got yellow")
+    ctx.strokeStyle = "yellow";
+    console.log(ctx.strokeStyle);
+    ctx.fillStyle = "yellow";
 });
 // }
