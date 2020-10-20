@@ -24,7 +24,7 @@ canvas {
 }
 
 #colors {
-    /* width: 100%; */
+    /* width: 50%; */
     display: flex;
     flex-direction: reverse;
     justify-content: flex-end;
@@ -34,7 +34,7 @@ canvas {
 }
 
 #buttons>button {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: 'Love Ya Like A Sister', cursive;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 10px;
     padding: 10px;
@@ -65,8 +65,8 @@ canvas {
     color: #000000;
 }
 
-#blue {
-    background-color: blue;
+#aqua {
+    background-color: #09fbd3;
 }
 
 #cyan {
@@ -86,5 +86,5 @@ canvas {
 }
 
 #green {
-    background-color: green;
+    background-color: #7fff00;
 }

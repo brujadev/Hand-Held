@@ -1,4 +1,4 @@
-// import { pointsAlongLine } from "vector.js";
+import { pointsAlongLine } from "./vector.js";
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -32,7 +32,7 @@ function init() {
     let pencil3 = document.getElementById("button3");
     let reset = document.getElementById("resetButton");
     let pink = document.getElementById("pink");
-    let blue = document.getElementById("blue");
+    let aqua = document.getElementById("aqua");
     let orange = document.getElementById("orange");
     let cyan = document.getElementById("cyan");
     let yellow = document.getElementById("yellow");
@@ -86,7 +86,7 @@ function normRandom(size) {
     return (Math.random() - 0.5) * size;
 }
 
-function paintMove(x, y) {
+function chalk(x, y) {
     ctx.beginPath();
     // ctx.fillStyle = "rgb(147,112,219,0.4)";
     let thickness = 2;
@@ -96,34 +96,39 @@ function paintMove(x, y) {
     ctx.strokeStyle = current_color;
     ctx.fillStyle = current_color;
 
-    // let interpolatedPoints = pointsAlongLine(x, y, last_x, last_y, 0.5);
-    // console.log(interpolatedPoints);
+    let interpolatedPoints = pointsAlongLine(x, y, last_x, last_y, 5);
 
     let randomness = 30;
-    // interpolatedPoints.forEach(function(p) {
-    //     ctx.beginPath();
-    //     ctx.arc(
-    //         p.x + norm_random(5),
-    //         p.y + norm_random(10),
-    //         1,
-    //         0,
-    //         Math.PI * 2
-    //     );
-    //     ctx.stroke();
-    // });
-    for (let i = 0; i < 20; i++) {
-        ctx.fillRect(x + normRandom(randomness), y + normRandom(randomness), 2, 25);
-    }
-    ctx.arc(x, y, thickness / 2, 0, Math.PI * 2);
+    interpolatedPoints.forEach(function(p) {
+        ctx.beginPath();
+        for (let i = 0; i < 5; i++) {
+            ctx.fillRect(
+                p.x + normRandom(randomness),
+                p.y + normRandom(randomness),
+                2,
+                25
+            );
+        }
+        // ctx.arc(
+        //     p.x + norm_random(5),
+        //     p.y + norm_random(10),
+        //     1,
+        //     0,
+        //     Math.PI * 2
+        // );
+        ctx.stroke();
+    });
+    // 
+    // ctx.arc(x, y, thickness / 2, 0, Math.PI * 2);
     ctx.fill();
     last_x = x;
     last_y = y;
 }
 
 
-function paintMove2(x, y) {
+function bubbles(x, y) {
     ctx.beginPath();
-    ctx.fillStyle = "green";
+    // ctx.fillStyle = "green";
     let thickness = 1;
     // ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
@@ -131,19 +136,22 @@ function paintMove2(x, y) {
     ctx.strokeStyle = current_color;
     ctx.fillStyle = current_color;
     // ctx.beginPath();
-    let randomness = 25;
-    for (let i = 0; i < 15; i++) {
+
+    let interpolatedPoints = pointsAlongLine(x, y, last_x, last_y, 7);
+
+    let randomness = 40;
+    interpolatedPoints.forEach(function(p) {
         ctx.beginPath();
         // ctx.strokeStyle = "rbg(255,0,255,0.6)"
         ctx.arc(
-            x + normRandom(randomness),
-            y + normRandom(randomness),
-            10,
+            p.x + normRandom(5),
+            p.y + normRandom(60),
+            Math.random() * 20,
             0,
             Math.PI * 2);
         // ctx.strokeStyle = "rgb(255,0,255)"
         ctx.stroke();
-    }
+    });
     // ctx.fill();
     last_x = x;
     last_y = y;
@@ -199,9 +207,9 @@ canvas.addEventListener("mousemove", function(evt) {
     let x = evt.clientX;
     let y = evt.clientY;
     if (whichPen === 1) {
-        paintMove(x, y);
+        chalk(x, y);
     } else if (whichPen === 2) {
-        paintMove2(x, y);
+        bubbles(x, y);
     } else if (whichPen === 3) {
         paintMove3(x, y);
     }
@@ -251,8 +259,8 @@ pink.addEventListener("click", () => {
     ctx.fillStyle = current_color;
 });
 
-blue.addEventListener("click", () => {
-    current_color = "blue";
+aqua.addEventListener("click", () => {
+    current_color = "#09fbd3";
     console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
 });
@@ -265,7 +273,7 @@ orange.addEventListener("click", () => {
 });
 
 green.addEventListener("click", () => {
-    current_color = "green";
+    current_color = "#7fff00";
     // ctx.strokeStyle = "green";
     // console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
