@@ -86,9 +86,8 @@ function normRandom(size) {
     return (Math.random() - 0.5) * size;
 }
 
-function chalk(x, y) {
+function chalkPen(x, y) {
     ctx.beginPath();
-    // ctx.fillStyle = "rgb(147,112,219,0.4)";
     let thickness = 2;
     ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
@@ -109,59 +108,42 @@ function chalk(x, y) {
                 25
             );
         }
-        // ctx.arc(
-        //     p.x + norm_random(5),
-        //     p.y + norm_random(10),
-        //     1,
-        //     0,
-        //     Math.PI * 2
-        // );
+
         ctx.stroke();
     });
-    // 
-    // ctx.arc(x, y, thickness / 2, 0, Math.PI * 2);
     ctx.fill();
     last_x = x;
     last_y = y;
 }
 
 
-function bubbles(x, y) {
+function bubblesPen(x, y) {
     ctx.beginPath();
-    // ctx.fillStyle = "green";
     let thickness = 1;
-    // ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
     ctx.stroke();
     ctx.strokeStyle = current_color;
     ctx.fillStyle = current_color;
-    // ctx.beginPath();
 
     let interpolatedPoints = pointsAlongLine(x, y, last_x, last_y, 7);
 
     let randomness = 40;
     interpolatedPoints.forEach(function(p) {
         ctx.beginPath();
-        // ctx.strokeStyle = "rbg(255,0,255,0.6)"
         ctx.arc(
             p.x + normRandom(5),
             p.y + normRandom(60),
             Math.random() * 20,
             0,
             Math.PI * 2);
-        // ctx.strokeStyle = "rgb(255,0,255)"
         ctx.stroke();
     });
-    // ctx.fill();
     last_x = x;
     last_y = y;
 }
 
-function paintMove3(x, y) {
+function fanPen(x, y) {
     ctx.beginPath();
-    // ctx.fillStyle = "green";
-    // let thickness = 1;
-    // ctx.lineWidth = thickness;
     ctx.moveTo(last_x, last_y);
     ctx.lineTo(x, y);
     ctx.strokeStyle = current_color;
@@ -169,22 +151,16 @@ function paintMove3(x, y) {
     ctx.stroke();
 
     for (var i = 0; i < 20; i++) {
-        // ctx.fillStyle = 'black';
         ctx.beginPath();
         ctx.moveTo(2, 10);
         ctx.lineTo(10, 0);
         ctx.lineTo(0, 1);
         ctx.lineTo(20, 3);
-        // ctx.closePath();
     }
 }
 
 function paintEnd(x, y) {
-    // ctx.beginPath();
-    // ctx.fillStyle = "rgb(147,112,219)";
-    // //not red?
-    // // ctx.arc(x, y, 20, 0, 2 * Math.PI);
-    // ctx.stroke();
+
 }
 
 canvas.addEventListener("mousedown", function(evt) {
@@ -207,11 +183,11 @@ canvas.addEventListener("mousemove", function(evt) {
     let x = evt.clientX;
     let y = evt.clientY;
     if (whichPen === 1) {
-        chalk(x, y);
+        chalkPen(x, y);
     } else if (whichPen === 2) {
-        bubbles(x, y);
+        bubblesPen(x, y);
     } else if (whichPen === 3) {
-        paintMove3(x, y);
+        fanPen(x, y);
     }
 });
 
@@ -223,15 +199,12 @@ canvas.addEventListener("touchmove", function(evt) {
 
     let x = touch.clientX;
     let y = touch.clientY;
-    paintMove(x, y);
+    chalkPen(x, y);
 
 });
 
 canvas.addEventListener("mouseup", function(evt) {
     penDown = false;
-    // let x = evt.clientX;
-    // let y = evt.clientY;
-    // paintEnd(x, y)
 });
 
 
@@ -250,12 +223,9 @@ canvas.addEventListener("mouseout", function(evt) {
 
 });
 
-// function colorSelected() {
 
 pink.addEventListener("click", () => {
     current_color = "pink";
-    // ctx.strokeStyle = current_color;
-    // console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
 });
 
@@ -267,31 +237,20 @@ aqua.addEventListener("click", () => {
 
 orange.addEventListener("click", () => {
     current_color = "orange";
-    // ctx.strokeStyle = "orange";
-    // console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
 });
 
 green.addEventListener("click", () => {
     current_color = "#7fff00";
-    // ctx.strokeStyle = "green";
-    // console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
 });
 
 cyan.addEventListener("click", () => {
     current_color = "cyan";
-    // console.log("got cyan")
-    // ctx.strokeStyle = "cyan";
-    // console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
 });
 
 yellow.addEventListener("click", () => {
     current_color = "yellow";
-    // console.log("got yellow")
-    // ctx.strokeStyle = "yellow";
-    // console.log(ctx.strokeStyle);
     ctx.fillStyle = current_color;
 });
-// }
