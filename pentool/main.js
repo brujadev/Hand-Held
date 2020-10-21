@@ -31,6 +31,7 @@ function init() {
     let pencil2 = document.getElementById("button2");
     let pencil3 = document.getElementById("button3");
     let reset = document.getElementById("resetButton");
+
     let pink = document.getElementById("pink");
     let aqua = document.getElementById("aqua");
     let orange = document.getElementById("orange");
@@ -96,8 +97,8 @@ function chalkPen(x, y) {
     ctx.fillStyle = current_color;
 
     let interpolatedPoints = pointsAlongLine(x, y, last_x, last_y, 5);
-
     let randomness = 30;
+
     interpolatedPoints.forEach(function(p) {
         ctx.beginPath();
         for (let i = 0; i < 5; i++) {
@@ -108,14 +109,12 @@ function chalkPen(x, y) {
                 25
             );
         }
-
         ctx.stroke();
     });
     ctx.fill();
     last_x = x;
     last_y = y;
 }
-
 
 function bubblesPen(x, y) {
     ctx.beginPath();
@@ -159,9 +158,7 @@ function fanPen(x, y) {
     }
 }
 
-function paintEnd(x, y) {
-
-}
+function paintEnd(x, y) {}
 
 canvas.addEventListener("mousedown", function(evt) {
     let x = evt.clientX;
@@ -199,7 +196,13 @@ canvas.addEventListener("touchmove", function(evt) {
 
     let x = touch.clientX;
     let y = touch.clientY;
-    chalkPen(x, y);
+    if (whichPen === 1) {
+        chalkPen(x, y);
+    } else if (whichPen === 2) {
+        bubblesPen(x, y);
+    } else if (whichPen === 3) {
+        fanPen(x, y);
+    }
 
 });
 
@@ -220,9 +223,7 @@ canvas.addEventListener("touchend", function(evt) {
 
 canvas.addEventListener("mouseout", function(evt) {
     penDown = false;
-
 });
-
 
 pink.addEventListener("click", () => {
     current_color = "pink";
