@@ -8,7 +8,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 //my gradient background
-var gradient = ctx.createLinearGradient(20, 0, 820, 0);
+var gradient = ctx.createLinearGradient(20, 0, canvas.width, 0);
 gradient.addColorStop(0, '#55ea82');
 gradient.addColorStop(1, '#f27ef4');
 ctx.fillStyle = gradient;
@@ -49,20 +49,14 @@ function init() {
     });
 
     pencil2.addEventListener("click", function() {
-        // if (whichPen === 2) {
-        //     whichPen = 0;
-        // } else {
+
         whichPen = 2;
         // }
         console.log("working pen 2");
     });
 
     pencil3.addEventListener("click", function() {
-        // if (whichPen === 3) {
-        //     whichPen = 0;
-        // } else {
         whichPen = 3;
-        // }
         console.log("working pen 3");
     });
 
@@ -203,7 +197,6 @@ canvas.addEventListener("touchmove", function(evt) {
     } else if (whichPen === 3) {
         fanPen(x, y);
     }
-
 });
 
 canvas.addEventListener("mouseup", function(evt) {
