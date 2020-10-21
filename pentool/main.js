@@ -62,7 +62,7 @@ function init() {
 
     reset.addEventListener("click", function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        var gradient = ctx.createLinearGradient(20, 0, 820, 0);
+        var gradient = ctx.createLinearGradient(20, 0, canvas.width, 0);
         gradient.addColorStop(0, '#55ea82');
         gradient.addColorStop(1, '#f27ef4');
         ctx.fillStyle = gradient;
