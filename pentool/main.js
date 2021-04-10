@@ -223,11 +223,11 @@ pink.addEventListener("click", () => {
     ctx.fillStyle = current_color;
 });
 
-// aqua.addEventListener("click", () => {
-//     current_color = "#09fbd3";
-//     console.log(ctx.strokeStyle);
-//     ctx.fillStyle = current_color;
-// });
+aqua.addEventListener("click", () => {
+    current_color = "#09fbd3";
+    console.log(ctx.strokeStyle);
+    ctx.fillStyle = current_color;
+});
 
 orange.addEventListener("click", () => {
     current_color = "orange";
